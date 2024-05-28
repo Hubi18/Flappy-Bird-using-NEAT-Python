@@ -94,6 +94,12 @@ Po wyliczeniu sumy ważonej, algorytm przekazuje ją przez funkcję aktywacji, a
 
 ![alt text](im8.png)
 
+W momencie uruchomienia gry, generowana jest liczba ptaków, odpowiednia do liczby populacji, ustawionej w pliku konfiguracyjnym parametru: *pop_size*. Każdy z ptaków reprezentuje swoją sieć neuronową, z własnymi wagami i wartościami biasów.
+
+Gra trwa do ostatniego ptaka. Gdy ostatni ptak zawiedzie, czyli wpadnie w rurę albo spadnie na ziemię, rozpoczyna się kolejna gra z nową generacją ptaków, utworzonych na podstawie genotypu najlepszego ptaka z porzedniej generacji.
+
+Generacje tworzą się jedna po drugiej, do momentu idealnego wyuczenia ptaka (w kodzie założone jest to po pokonaniu 50 rur przez ptaka).
+
 ## Plik konfiguracyjny
 
 Biblioteka NEAT Python używa pliku konfiguracyjnego, który zawiera ustawienia dla algortymu ewolucyjnego. Ten plik pozwala użytkownikowi na dostosowanie różnych parametrów i hiperparametrów, kluczowych do sposobu działania algorytmu NEAT, np:

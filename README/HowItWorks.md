@@ -12,18 +12,18 @@ Podejście NEAT rozpoczyna się od sieci składającej się tylko z neuronów we
 ### Ewolucja w NEAT
 + **Mutacje** - mogą one zmieniać wagi połączeń, dodawać nowe połączenia lub nowe neurony. Mutacje są jednym ze sposobów wprowadzania zmienności do populacji sieci neuronowych
 
-![alt text](image.png)
-![alt text](<Pasted image 20240527185915.png>)
+![alt text](im1.png)
+![alt text](<im2.png>)
 
 - **Rekombinacje** - krzyżowanie genotypów dwóch rodzicielskich sieci neuronowych, co prowadzi do powstania potomnych sieci, które dziedziczą cechy obu rodziców.
 
-![alt text](<Pasted image 20240527191913.png>)
+![alt text](<im3.png>)
 
 - **Selekcja** - Sieci są oceniane na podstawie ich zdolności do rozwiązywania problemu (fitness). Najlepiej działające sieci są wybierane do tworzenia kolejnych pokoleń.
 
 # Implementacja algorytmu
 
-![alt text](<Pasted image 20240527193928.png>)
+![alt text](<im4.png>)
 
 **Mechanika i zasady gry Flappy Bird**
 Flappy Bird to prosta, ale wciągająca gra wideo, w której gracz steruje małym ptakiem poruszającym się po ekranie. Celem gry jest unikanie kolizji z przeszkodami w postaci pionowych rur, które mają otwory na różnych wysokościach. Gracz kontroluje ptaka poprzez klikanie lub stuknięcia, które sprawiają, że ptak podskakuje. Kiedy gracz nie klika, ptak opada na dół z powodu grawitacji. Gra kończy się natychmiast, gdy ptak zderzy się z rurą lub ziemią.
@@ -42,13 +42,13 @@ Algorytm NEAT można zastosować do nauki sterowania ptakiem w grze Flappy Bird 
 2. **_Inicjalizacja populacji_**
 	- Algorytm zaczyna od generowania populacji sieci neuronowych z losowymi połączeniami i wagami. Każda sieć w populacji będzie sterować jednym ptakiem.
 3. **_Ocena Fitness_**
-	- Wartość Fitness jest określana na podstawie liczby rur, które ptak przeleci, zanim się rozbije. Im więcej rur ptak przeleci, tym wyższa wartość Fitness.
+	- Wartość Fitness jest określana na podstawie liczby pikseli, które ptak przeleci, zanim się rozbije. Im więcej pikseli ptak przeleci, tym wyższa wartość Fitness.
 4. **_Ewolucja_**
 	- Sieci neuronowe z wyższym Fitness mają większe szanse na bycie wybrane do krzyżowania i mutacji
 5. **_Iteracja_**
 	- Algorytm iteruje przez wiele pokoleń, za każdym razem oceniając Fitness sieci neuronowych, selekcjonując najlepsze, krzyżując je i mutując, aby stworzyć nową populację. 
 6. **_Zakończenie_**
-	- Po X etapach ewolucji, sieci neuronowe mogą ewoluować do punktu, w którym ptaki są w stanie skutecznie unikać rur przez dłuższy czas. 
+	- Po X etapach ewolucji, sieci neuronowe mogą ewoluować do punktu, w którym ptaki są w stanie skutecznie unikać rur przez dłuższy czas, co prowadzi w końcu do bezbłędnego wyuczenia.
 
 ## Dokładne omówienie gry
 
@@ -62,7 +62,7 @@ oraz jeden neuron wyjściowy:
 
 - skok albo brak skoku
 
-**Połączenia** (*connections*) - inie pomiędzy neuronami wyjścia i wejścia, które przekazują dane.
+**Połączenia** (*connections*) - linie pomiędzy neuronami wyjścia i wejścia, które przekazują dane.
 
 **Wagi** (*weight*) - każde połączenie posiada swoją tzw. wagę, która określa jak mocne lub jak słabe jest połączenie jest między danymi neuronami.
 
@@ -70,14 +70,14 @@ oraz jeden neuron wyjściowy:
 
 **Suma ważona** (*weighted sum*) - to kluczowy krok w działaniu każdego neuronu w sieci. Polega ona na obliczeniu ważonej sumy wszystkich wejść, które następnie są przekazywane przez funkcję aktywacji, aby uzyskać wyjście neuronu.
 
-**Funkcja aktywacji** (*activation funcion*) - wynik sumy ważonej jest przekształcany prze tę funkcję, aby uzyskać wyjście neuronu. W naszym przykładzie korzystamy z funkcji hiperbolicznego tangensa Tanh(x), który ze swojej właściwości nakłada przedział (-1, 1), co oznacza, że wynik może być zarówno dodatni, jak i ujemny.
-$$tanh(x)$$
+**Funkcja aktywacji** (*activation funcion*) - wynik sumy ważonej jest przekształcany prze tę funkcję, aby uzyskać wyjście neuronu. W naszym przykładzie korzystamy z funkcji hiperbolicznego tangensa Tanh(z), który ze swojej właściwości nakłada przedział (-1, 1), co oznacza, że wynik może być zarówno dodatni, jak i ujemny.
+$$f(z) = tanh(z)$$
 
-![alt text](image-1.png)
+![alt text](im5.png)
 
 Zdjęcie poniżej obrazuje przykładowe wylosowane wartości dla neuronów wejściowych, wartości wag połączeń w sieci oraz biasu.
 
-![alt text](image4.jpg)
+![alt text](im6.jpg)
 
 ### Obliczenie sumy ważonej
 
@@ -85,12 +85,17 @@ Mając dane przekazane z neuronów wejściowych, wagi połączeń i biasu, algor
 $$z = w_{1}x_{1}+w_{2}x_{2}+...+w_{n}x_{n}+b$$
 
 
-![alt text](image-5.png)
+![alt text](im7.png)
 
 Po wyliczeniu sumy ważonej, algorytm przekazuje ją przez funkcję aktywacji, aby uzyskać wyjście neuronu. Na tym etapie podejmowana jest decyzja:
 -  $$Jeśli\;f(z) > 0.5,\;ptak \;skacze$$
 -  $$Jeśli\;f(z) \leq 0.5,\;ptak \;nie\;skacze$$
 
-![alt text](image-7.png)
+![alt text](im8.png)
 
+## Plik konfiguracyjny
 
+Biblioteka NEAT Python używa pliku konfiguracyjnego, który zawiera ustawienia dla algortymu ewolucyjnego. Ten plik pozwala użytkownikowi na dostosowanie różnych parametrów i hiperparametrów, kluczowych do sposobu działania algorytmu NEAT, np:
+- rozmiaru populacji 
+- parametrów dla losowanych wag czy biasów
+- funkcji aktywacji

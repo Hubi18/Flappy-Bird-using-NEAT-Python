@@ -7,7 +7,7 @@ import random
 
 pygame.font.init()
 
-#wymiary okna gry
+#wymiary okna gry``
 WIN_WIDTH = 500
 WIN_HEIGHT = 800
 
@@ -266,7 +266,7 @@ def main(genomes, config):
                 birds.pop(x)
                 nets.pop(x)
                 ge.pop(x)
-        if score > 5:
+        if score > 50:
             break
 
         base.move()

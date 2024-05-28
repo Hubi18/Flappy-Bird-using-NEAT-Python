@@ -1,4 +1,3 @@
-#biblioteki
 import pygame
 import neat
 import time
@@ -7,11 +6,9 @@ import random
 
 pygame.font.init()
 
-#wymiary okna gry``
 WIN_WIDTH = 500
 WIN_HEIGHT = 800
 
-#import grafik gry
 BIRD_IMGS = [pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "bird1.png"))), pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "bird2.png"))), pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "bird3.png")))]
 PIPE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "pipe.png")))
 BASE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "base.png")))
@@ -20,12 +17,8 @@ BG_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "bg.png
 STAT_FONT = pygame.font.SysFont("comicsans", 30)
 GEN = 0
 
-
 class Bird:
-    """
-    Reprezentacja klasy ptaka: jego parametrów startowych, kontroli,  metod skakania i poruszania się do przodu
 
-    """
     IMGS = BIRD_IMGS
     MAX_ROTATION = 25
     ROT_VEL = 20
@@ -93,8 +86,8 @@ class Bird:
         return pygame.mask.from_surface(self.img)
 
 class Pipe:
-    GAP = 200 #odległość pomiędzy rurami
-    VEL = 5 #prędkość poruszania rur
+    GAP = 200
+    VEL = 5
     
     def __init__(self, x):
         self.x = x

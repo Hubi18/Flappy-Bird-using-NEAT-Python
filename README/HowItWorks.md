@@ -72,7 +72,9 @@ oraz jeden neuron wyjściowy:
 
 **Funkcja aktywacji** (*activation funcion*) - wynik sumy ważonej jest przekształcany prze tę funkcję, aby uzyskać wyjście neuronu. W naszym przykładzie korzystamy z funkcji hiperbolicznego tangensa Tanh(x), który ze swojej właściwości nakłada przedział (-1, 1), co oznacza, że wynik może być zarówno dodatni, jak i ujemny.
 $$tanh(x)$$
+
 ![alt text](image-1.png)
+
 Zdjęcie poniżej obrazuje przykładowe wylosowane wartości dla neuronów wejściowych, wartości wag połączeń w sieci oraz biasu.
 
 ![alt text](image4.jpg)
@@ -88,6 +90,7 @@ $$z = w_{1}x_{1}+w_{2}x_{2}+...+w_{n}x_{n}+b$$
 Po wyliczeniu sumy ważonej, algorytm przekazuje ją przez funkcję aktywacji, aby uzyskać wyjście neuronu. Na tym etapie podejmowana jest decyzja:
 -  $$Jeśli\;f(z) > 0.5,\;ptak \;skacze$$
 -  $$Jeśli\;f(z) \leq 0.5,\;ptak \;nie\;skacze$$
+
 ![alt text](image-7.png)
 
 

@@ -88,8 +88,9 @@ $$z = w_{1}x_{1}+w_{2}x_{2}+...+w_{n}x_{n}+b$$
 ![alt text](im7.png)
 
 Po wyliczeniu sumy ważonej, algorytm przekazuje ją przez funkcję aktywacji, aby uzyskać wyjście neuronu. Na tym etapie podejmowana jest decyzja:
--  $$Jeśli\;f(z) > 0.5,\;ptak \;skacze$$
--  $$Jeśli\;f(z) \leq 0.5,\;ptak \;nie\;skacze$$
+
+- $$\text{Jeśli } f(z) > 0.5, \text{ ptak skacze}$$
+- $$\text{Jeśli } f(z) \leq 0.5, \text{ ptak nie skacze}$$
 
 ![alt text](im8.png)
 
